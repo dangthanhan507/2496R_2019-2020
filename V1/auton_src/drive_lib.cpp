@@ -83,7 +83,7 @@ void drive_claw() {
 }
 
 void stacker() {
-  PID claw_(30,0,0);
+  PID claw_(20,0,0);
   PID lift_(P_LIFT,I_LIFT,D_LIFT);
   double claw_value, lift_value;
 
@@ -135,7 +135,7 @@ void stacker() {
       lift_manual = false;
       claw_manual = false;
       lift_value = lift_.calculate_lift(stack_target, p_LiftR.value(analogUnits::range12bit), LIMIT_LIFT);
-      if(lift_value <= 1000) lift_value = 1000;
+      if(lift_value <= 6000) lift_value = 6000;
       v_lift(lift_value);
       sleepMs(200);
       grab_ = false;
@@ -157,10 +157,10 @@ void stacker() {
     if(lift_manual) {
       drive_lift();
     }
-    else if (std::abs(claw_.error) < 300 || claw_manual == true) {
+    else if (std::abs(claw_.error) < 400 || claw_manual == true) {
       lift_value = lift_.calculate_lift(stack_target, p_LiftR.value(analogUnits::range12bit), LIMIT_LIFT);
-      if(lift_value >= 1000 && lift_target == lift_min){
-        lift_value = 1000;
+      if(lift_value >= 4000 ){
+        lift_value = 4000;
       }
       v_lift(lift_value);
     }

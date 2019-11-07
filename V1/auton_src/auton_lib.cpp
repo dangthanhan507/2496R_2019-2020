@@ -133,7 +133,7 @@ double turn_1D(double target, double theta_vmax, double theta_accelm) {
 
   double init_gyro = -Gyro.value(analogUnits::range8bit);
   MotionProfile turn(std::abs(theta_vmax), std::abs(theta_accelm));
-  PID tur(350,0,0);
+  PID tur(400,0,0);
 
 
 

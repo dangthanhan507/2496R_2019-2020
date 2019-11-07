@@ -1,6 +1,6 @@
 #ifndef DRIVE_LIB_H
 #define DRIVE_LIB_H
-##include "config.h"
+#include "config.h"
 
 extern double mpvert;
 extern double mphor;
