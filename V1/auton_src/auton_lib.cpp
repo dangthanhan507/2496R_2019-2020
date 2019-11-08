@@ -234,20 +234,20 @@ void place() {
 }
 void place(int offset) {
   lift_target = lift_min + 20+offset;
-  sleepMs(210);
+  sleepMs(300);
   grab = false;
   sleepMs(650);
 }
 void lift() {
   grab = true;
   sleepMs(200);
-  lift_target = lift_min - 300;
+  lift_target = lift_min - 405;
 }
 void deploy() {
   lift_target = lift_min - 200;
   claw_pid_status = true;
   grab = false;
   sleepMs(450);
-  lift_target = lift_min-20;
+  lift_target = lift_min;
   sleepMs(300);
 }
