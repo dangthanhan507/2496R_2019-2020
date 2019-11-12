@@ -5,34 +5,35 @@
 
 void top_red_tower() {
   device_setup();
+  //deploy()
   stop_chas(brakeType::hold);
   thread t1(lift_claw_subsystem);
   lift_pid_status = true;
   lift_target = lift_min;
-  fwd_1D(75,800,2000);
+  fwd_1D(190,800,1000);
   deploy();
+  sleepMs(500);
   lift();
-  fwd_1D(725,800,2000);
-  lift_target = lift_min - 330;
-  fwd_1D(410,500,2000);
-  place(50);
+  fwd_1D(750,800,1000);
+  place(80);
   lift();
-  turn_1D(95,100,150);
-  fwd_1D(1130,1500,2000);
-  place(50);
+  turn_1D(59,50,60);
+  fwd_1D(1150,1500,1500);
+  place(80);
   lift();
-  fwd_1D(560,900,2000);
-  turn_1D(20,100,120);
-  fwd_1D(1000,1400,2200);
+  fwd_1D(550,900,1000);
+  turn_1D(32,50,60);
+  fwd_1D(1150,1300,2000);
   lift_target = lift_min;
   sleepMs(1000);
   grab = false;
-  fwd_1D(-500,-900,-2000);
-  t1.interrupt();
+  sleepMs(200);//place stack
+
+  fwd_1D(-140,-800,-1000);
   lift_pid_status = false;
   claw_pid_status = false;
-  v_lift(0);
-}
+  t1.interrupt();
+  v_lift(0);}
 
 void bot_red() {//tuned
   stop_chas(brakeType::hold);
@@ -55,7 +56,7 @@ void bot_red() {//tuned
   lift();
   sleepMs(500);
   fwd_1D(-1100,1500,2000);
-  turn_1D(-144,-100,-150);
+  turn_1D(-84,-50,-80);
   fwd_1D(1600,1800,3000);
   lift_target = lift_min;
   sleepMs(1000);

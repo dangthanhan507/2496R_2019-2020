@@ -17,12 +17,24 @@ void autonomous() {
   }
 }
 
-
+int prev_gyro = 0, gyro_r = 0;
+int modifier = 0;
 void drivercontrol() {
    while (c_gyro.isCalibrating()){}
+   sleepMs(3000);
     while(true) {
-      Brain.Screen.printAt(100, 70, "Yo gyro deg: %.3f", (double)c_gyro.value(analogUnits::range8bit));
-      sleepMs(50);
+      prev_gyro = gyro_r;
+      gyro_r = c_gyro.value(analogUnits::range8bit) + modifier;
+
+      if((int)c_gyro.value(analogUnits::range8bit) <= 5 && prev_gyro > 200) {
+        modifier += 225;
+      }
+      else if (gyro_r >= -5 && prev_gyro < -200) {
+        modifier += -225;
+      }
+      Brain.Screen.printAt(100, 70, "Yo gyro deg: %d", gyro_r);
+      Brain.Screen.newLine();
+      sleepMs(5);
     }
 }
 

@@ -202,14 +202,14 @@ void device_setup() {
 void lift_claw_subsystem() {
   PID lift(P_LIFT, I_LIFT, D_LIFT);
   PID claw(30,0,0);
-  control.Screen.clearScreen();
+  //control.Screen.clearScreen();
   while(true) {
     control.Screen.print(Gyro.value(analogUnits::range8bit));
     control.Screen.newLine();
     if(lift_pid_status) {
       lift_value = lift.calculate_lift(lift_target, p_LiftR.value(analogUnits::range12bit) ,LIMIT_LIFT);
-      if(lift_value >= 3000 && lift_target == lift_min){
-        lift_value = 3000;
+      if(lift_value >= 4000 && lift_target == lift_min){
+        lift_value = 4000;
       }
       v_lift(lift_value);
     }
@@ -241,13 +241,13 @@ void place(int offset) {
 void lift() {
   grab = true;
   sleepMs(200);
-  lift_target = lift_min - 405;
+  lift_target = lift_min - 500;
 }
 void deploy() {
-  lift_target = lift_min - 200;
+  lift_target = lift_min-200;
   claw_pid_status = true;
   grab = false;
-  sleepMs(450);
-  lift_target = lift_min;
+  sleepMs(500);
+  lift_target = lift_min+80;
   sleepMs(300);
 }

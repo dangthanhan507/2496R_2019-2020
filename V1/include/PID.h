@@ -51,10 +51,9 @@ class PID {
 
 
 
-      value = kp*error + ki*integral + kd*derivative;
-      if(error > 0) value = kp*error/3 + ki*integral + kd*derivative;
-      if(value >= 3000) {
-        value = 3000;
+      value = kp*error/3 + ki*integral + kd*derivative;
+      if(value >= 6000) {
+        value = 6000;
       }
       else if (value <= -7000) {
         value = -7000;

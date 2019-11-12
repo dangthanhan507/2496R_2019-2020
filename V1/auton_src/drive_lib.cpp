@@ -124,7 +124,7 @@ void stacker() {
 
     if(control.ButtonUp.pressing()) {
       stack_ = true;
-      stack_target = lift_min-300;
+      stack_target = lift_min-450;
       grab_ = true;
       lift_manual = false;
       claw_manual = false;
@@ -140,7 +140,7 @@ void stacker() {
       sleepMs(200);
       grab_ = false;
     }
-    claw_.Calculate(claw_min - 1200, p_Claw.value(analogUnits::range12bit), 0);
+    claw_.Calculate(claw_min - 1250, p_Claw.value(analogUnits::range12bit), 0);
     lift_.calculate_lift(stack_target, p_LiftR.value(analogUnits::range12bit), LIMIT_LIFT);
 
 
@@ -158,6 +158,7 @@ void stacker() {
       drive_lift();
     }
     else if (std::abs(claw_.error) < 400 || claw_manual == true) {
+      if(control.ButtonUp.pressing()) sleepMs(200);
       lift_value = lift_.calculate_lift(stack_target, p_LiftR.value(analogUnits::range12bit), LIMIT_LIFT);
       if(lift_value >= 4000 ){
         lift_value = 4000;

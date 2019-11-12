@@ -70,9 +70,9 @@ extern gyro Gyro;
 //**********************
 
 //drive constants
-#define P_LIFT 50
+#define P_LIFT 47
 #define I_LIFT 0
-#define D_LIFT 3500
+#define D_LIFT 2000
 #define LIMIT_LIFT 50
 
 #define CHASSIS_DEADZONE 3
@@ -84,7 +84,7 @@ extern gyro Gyro;
 #define LIFT_MODIFIER -200
 #define LIFT_SPEED 100
 
-#define GRABFF 2000
+#define GRABFF 4500
 #define CLAW_CLOSE 1133
 #define CLAW_OPEN 1700
 //**********************
