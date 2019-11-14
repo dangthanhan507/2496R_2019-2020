@@ -38,7 +38,7 @@ void top_blue_tower() {
 }
 
 void skills() {
-  device_setup();
+  /*device_setup();
   //deploy()
   stop_chas(brakeType::hold);
   thread t1(lift_claw_subsystem);
@@ -77,7 +77,7 @@ void skills() {
 
   fwd_1D(-1100,-1000,-1000);
   lift_target = lift_min;
-  /*
+  
   Gyro.startCalibration();
   sleepMs(2000);
   turn_1D(-62,-60,-60);
@@ -103,6 +103,39 @@ void skills() {
 
 
   //lift();
+
+  device_setup();
+  stop_chas(brakeType::hold);
+  thread t1(lift_claw_subsystem);
+  lift_pid_status = true;
+  lift_target = lift_min;
+  deploy();
+  sleepMs(500);
+  lift();
+  sleepMs(200);
+  fwd_1D(200,800,1000);
+  lift_target = lift_min - 1250;
+  sleepMs(1500);
+  fwd_1D(700,800,2000);
+  sleepMs(200);
+  grab = false;//first tower
+  fwd_1D(-500,-500,-800);
+  lift_target = lift_min;
+  turn_1D(-33,-50,-60);
+  fwd_1D(-500,-1000,-1200);
+  fwd_1D(1500,1000,1400);
+  /*turn_1D(-60,-50,-60);
+  fwd_1D(600,800,1000);
+  turn_1D(-25,-50,-60);
+  fwd_1D(1200,400,600);
+  lift_target = lift_min - 100;
+  sleepMs(200);
+  lift();
+  sleepMs(500);
+  turn_1D(-75,-50,-60);
+  sleepMs(500);
+  fwd_1D(600,800,1000);*/
+
 }
 
 
